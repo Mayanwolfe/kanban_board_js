@@ -1,11 +1,11 @@
-import KanbanAPI from "../api/KanbanAPI"
+import KanbanAPI from "../api/KanbanAPI.js"
 
 
 export default class Item {
     constructor(id, content) {
         this.elements = {}
         this.elements.root = Item.createRoot()
-        this.elements.input = this.elements.root.querySelector("kanban__item-input")
+        this.elements.input = this.elements.root.querySelector(".kanban__item-input")
         this.elements.root.dataset.id = id
         this.elements.input.textContent = content
         this.content = content

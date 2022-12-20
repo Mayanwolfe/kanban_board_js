@@ -22,7 +22,7 @@ export default class Column {
         const itemsFromLocalStorage = KanbanAPI.getItems(id); // a list of item objects [{id: 1, content: '...'}, {}]
         itemsFromLocalStorage.forEach(item => {
             const currentItem = new Item(item.id, item.content);
-            this.elements.items.appendChild(currentItem.elements.root)
+            this.elements.items.appendChild(currentItem.elements.root);
         })
 
         this.elements.addItem.addEventListener("click",

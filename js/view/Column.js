@@ -18,11 +18,18 @@ export default class Column {
 
         this.elements.items.appendChild(topDropZone)
 
-        this.elements.addItem.addEventListener("click", 
-        () => {
-            const newItem = KanbanAPI.insertItem(id, "")
-            this.renderItem(newItem)
-        }
+        // after appending the topDropZone, append items read from localStorage
+        const itemsFromLocalStorage = KanbanAPI.getItems(id); // a list of item objects [{id: 1, content: '...'}, {}]
+        itemsFromLocalStorage.forEach(item => {
+            const currentItem = new Item(item.id, item.content);
+            this.elements.items.appendChild(currentItem.elements.root)
+        })
+
+        this.elements.addItem.addEventListener("click",
+            () => {
+                const newItem = KanbanAPI.insertItem(id, "")
+                this.renderItem(newItem)
+            }
         )
     }
 
